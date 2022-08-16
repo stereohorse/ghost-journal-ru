@@ -9,7 +9,7 @@
                         <a class="gh-card-link" href="{{url}}">
                             <header class="gh-card-header">
                                 <div class="gh-article-meta">
-                                    <span class="gh-card-date"><time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></span>
+                                    <span class="gh-card-date">Последняя статья — <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></span>
                                 </div>
                                 <h2 class="gh-article-title gh-card-title">{{title}}</h2>
                             </header>
@@ -17,7 +17,7 @@
                             <p class="gh-article-excerpt">{{excerpt}}</p>
 
                             <footer class="gh-card-meta">
-                                <span class="gh-card-duration">{{reading_time}}</span>
+                                <span class="gh-card-duration">{{reading_time minute="Время чтения: 1 минута" minutes="Время чтения: % минут"}}</span>
                                 {{#if @site.comments_enabled}}
                                     {{comment_count class="gh-card-comments"}}
                                 {{/if}}
@@ -33,7 +33,7 @@
 
         <div class="gh-wrapper">
             <section class="gh-section">
-                <h2 class="gh-section-title">Последние статьи</h2>
+                <h2 class="gh-section-title">Публикации</h2>
 
                 <div class="gh-feed">
                     {{^is "paged"}}
@@ -75,12 +75,12 @@
                     {{^if @member.paid}}
                         <div class="gh-signup">
                             {{^if @member}}
-                                <p class="gh-signup-description">Подпишитесь на новости из мира обеспечения качества.</p>
+                                <p class="gh-signup-description">Ежемесячная подборка ресурсов, которые углубят знания о качественной разработке.</p>
 
                                 <a class="gh-subscribe-input" href="#/portal/signup" data-portal="signup">
                                     <div class="gh-subscribe-input-text">
                                         {{> icons/email}}
-                                        jamie@example.com
+                                        mail@example.com
                                     </div>
                                     <div class="gh-subscribe-input-btn">Подписаться</div>
                                 </a>

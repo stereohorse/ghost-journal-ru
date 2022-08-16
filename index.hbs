@@ -9,7 +9,7 @@
                         <a class="gh-card-link" href="{{url}}">
                             <header class="gh-card-header">
                                 <div class="gh-article-meta">
-                                    <span class="gh-card-date">Последние — <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></span>
+                                    <span class="gh-card-date"><time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></span>
                                 </div>
                                 <h2 class="gh-article-title gh-card-title">{{title}}</h2>
                             </header>
@@ -33,7 +33,7 @@
 
         <div class="gh-wrapper">
             <section class="gh-section">
-                <h2 class="gh-section-title">More issues</h2>
+                <h2 class="gh-section-title">Последние статьи</h2>
 
                 <div class="gh-feed">
                     {{^is "paged"}}
@@ -48,15 +48,15 @@
                 </div>
 
                 {{#match posts.length "=" 1}}
-                    Additional issues will be published soon.
+                    Больше статей нет. Мы над этим работаем :)
                 {{/match}}
 
-                <button class="gh-loadmore gh-btn">Load more issues</button>
+                <button class="gh-loadmore gh-btn">Загрузить ещё</button>
             </section>
 
             <aside class="gh-sidebar">
                 <section class="gh-section">
-                    <h2 class="gh-section-title">About</h2>
+                    <h2 class="gh-section-title">О сайте</h2>
 
                     <div class="gh-about">
                         {{#if @site.icon}}
@@ -75,14 +75,14 @@
                     {{^if @member.paid}}
                         <div class="gh-signup">
                             {{^if @member}}
-                                <p class="gh-signup-description">Sign up now to get access to the library of members-only issues.</p>
+                                <p class="gh-signup-description">Подпишитесь на новости из мира обеспечения качества.</p>
 
                                 <a class="gh-subscribe-input" href="#/portal/signup" data-portal="signup">
                                     <div class="gh-subscribe-input-text">
                                         {{> icons/email}}
                                         jamie@example.com
                                     </div>
-                                    <div class="gh-subscribe-input-btn">Subscribe</div>
+                                    <div class="gh-subscribe-input-btn">Подписаться</div>
                                 </a>
                             {{else}}
                                 <p class="gh-signup-description">Upgrade to a paid account to get full access.</p>
@@ -95,7 +95,7 @@
                 {{#get "posts" filter="featured:true" limit="all" as |featured|}}
                     {{#if featured}}
                         <section class="gh-section">
-                            <h3 class="gh-section-title">Featured</h3>
+                            <h3 class="gh-section-title">Самые читаемые статьи</h3>
 
                             <div class="gh-featured gh-feed">
                                 {{#foreach featured}}
@@ -108,14 +108,14 @@
 
                 {{#get "tags" include="count.posts" limit="all" as |topic|}}
                     <section class="gh-section">
-                        <h3 class="gh-section-title">Topics</h3>
+                        <h3 class="gh-section-title">Разделы</h3>
 
                         <div class="gh-topic">
                             {{#foreach topic}}
                                 <a class="gh-topic-item" href="{{url}}">
                                     <h3 class="gh-topic-name">{{name}}</h3>
                                     <span class="gh-topic-count">
-                                        {{plural count.posts empty="0 issues" singular="% issue" plural="% issues"}}
+                                        {{plural count.posts empty="0 статей" singular="% статья" plural="% статей"}}
                                     </span>
                                 </a>
                             {{/foreach}}

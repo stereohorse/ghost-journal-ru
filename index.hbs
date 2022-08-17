@@ -31,61 +31,59 @@
             {{/get}}
         {{/is}}
 
-        <div class="gh-wrapper">
-            <section class="gh-section">
-                <h2 class="gh-section-title">Публикации</h2>
+        {{#match posts.length ">" 1}}
+            <div class="gh-wrapper">
+                <section class="gh-section">
+                    <h2 class="gh-section-title">Публикации</h2>
 
-                <div class="gh-feed">
-                    {{^is "paged"}}
-                        {{#foreach posts from="2"}}
-                            {{> loop}}
-                        {{/foreach}}
-                    {{else}}
-                        {{#foreach posts}}
-                            {{> loop}}
-                        {{/foreach}}
-                    {{/is}}
-                </div>
+                    <div class="gh-feed">
+                        {{^is "paged"}}
+                            {{#foreach posts from="2"}}
+                                {{> loop}}
+                            {{/foreach}}
+                        {{else}}
+                            {{#foreach posts}}
+                                {{> loop}}
+                            {{/foreach}}
+                        {{/is}}
+                    </div>
 
-                {{#match posts.length "=" 1}}
-                    Больше статей нет. Мы над этим работаем :)
-                {{/match}}
+                    <button class="gh-loadmore gh-btn">Загрузить ещё</button>
+                </section>
 
-                <button class="gh-loadmore gh-btn">Загрузить ещё</button>
-            </section>
+                <aside class="gh-sidebar">
+                    {{#get "posts" filter="featured:true" limit="all" as |featured|}}
+                        {{#if featured}}
+                            <section class="gh-section">
+                                <h3 class="gh-section-title">Самые читаемые статьи</h3>
 
-            <aside class="gh-sidebar">
-                {{#get "posts" filter="featured:true" limit="all" as |featured|}}
-                    {{#if featured}}
+                                <div class="gh-featured gh-feed">
+                                    {{#foreach featured}}
+                                        {{> loop}}
+                                    {{/foreach}}
+                                </div>
+                            </section>
+                        {{/if}}
+                    {{/get}}
+
+                    {{#get "tags" include="count.posts" limit="all" as |topic|}}
                         <section class="gh-section">
-                            <h3 class="gh-section-title">Самые читаемые статьи</h3>
+                            <h3 class="gh-section-title">Разделы</h3>
 
-                            <div class="gh-featured gh-feed">
-                                {{#foreach featured}}
-                                    {{> loop}}
+                            <div class="gh-topic">
+                                {{#foreach topic}}
+                                    <a class="gh-topic-item" href="{{url}}">
+                                        <h3 class="gh-topic-name">{{name}}</h3>
+                                        <span class="gh-topic-count">
+                                            {{plural count.posts empty="0 статей" singular="% статья" plural="% статей"}}
+                                        </span>
+                                    </a>
                                 {{/foreach}}
                             </div>
                         </section>
-                    {{/if}}
-                {{/get}}
-
-                {{#get "tags" include="count.posts" limit="all" as |topic|}}
-                    <section class="gh-section">
-                        <h3 class="gh-section-title">Разделы</h3>
-
-                        <div class="gh-topic">
-                            {{#foreach topic}}
-                                <a class="gh-topic-item" href="{{url}}">
-                                    <h3 class="gh-topic-name">{{name}}</h3>
-                                    <span class="gh-topic-count">
-                                        {{plural count.posts empty="0 статей" singular="% статья" plural="% статей"}}
-                                    </span>
-                                </a>
-                            {{/foreach}}
-                        </div>
-                    </section>
-                {{/get}}
-            </aside>
-        </div>
+                    {{/get}}
+                </aside>
+            </div>
+        {{/match}}
     </div>
 </main>

@@ -19,7 +19,7 @@
                             <footer class="gh-card-meta">
                                 <span class="gh-card-duration">{{reading_time minute="Время чтения: 1 минута" minutes="Время чтения: % мин"}}</span>
                                 {{#if @site.comments_enabled}}
-                                    {{comment_count class="gh-card-comments"}}
+                                    {{comment_count singular="комментарий" plural="комментариев" class="gh-card-comments"}}
                                 {{/if}}
                                 {{^has visibility="public"}}
                                     {{> icons/star}}

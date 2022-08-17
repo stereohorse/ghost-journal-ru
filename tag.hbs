@@ -4,7 +4,7 @@
     {{#tag}}
         <section class="gh-pagehead">
             <header class="gh-pagehead-content">
-                <div class="gh-tag-label">Topic</div>
+                <div class="gh-tag-label">Раздел</div>
 
                 <h1 class="gh-tag-name gh-pagehead-title">{{name}}</h1>
 
@@ -12,7 +12,7 @@
                     {{#if description}}
                         {{description}}
                     {{else}}
-                        Коллекция {{plural ../pagination.total empty="0 статей" singular="% статья" plural="% статьи"}}
+                        {{plural ../pagination.total empty="Нет статей" singular="1 статья" plural="Статей: %"}}
                     {{/if}}
                 </div>
             </header>
